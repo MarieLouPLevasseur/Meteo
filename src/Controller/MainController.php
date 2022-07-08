@@ -22,7 +22,7 @@ class MainController extends AbstractController
        
         // return new Response('<h1>Homepage</h1>');
         return $this->render('main/homepage.html.twig',[
-            'title' =>'Homepage',
+            'title' =>'Bienvenue sur la météo des villes !',
 
         ]);
 
