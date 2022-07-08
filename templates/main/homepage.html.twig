@@ -6,16 +6,15 @@
             <div class="col-9">
 
                 <h1 class="mb-5">Bienvenue sur la météo des villes !</h1>
-            {% for show_id, current_city in cities %}
+            {% for city_id, current_city in cities %}
 
-                <div class="item item--bg-snow">
-                    <div class="item--city"><a href="#">{{current_city.city}}</a></div>
+                <div class="item item--bg-{{current_city.weather}}">
+                    <div class="item--city"><a href="{{path ('cityAdd', {id: city_id})}}">{{current_city.city}}</a></div>
                     <div class="item--forecast">{{current_city.date}} : {{current_city.min}} / {{current_city.max}}</div>
                 </div>
             {% endfor %}
 
 
             </div>
-                    {% include('main/_sidebar.html.twig') %}
 
 {% endblock %}
