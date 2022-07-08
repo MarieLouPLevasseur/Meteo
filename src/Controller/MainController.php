@@ -19,10 +19,7 @@ class MainController extends AbstractController
      */
     public function homepage() :Response
     {
-        $homepageShows= "pouet";
-        dump($homepageShows);
-
-
+       
         // return new Response('<h1>Homepage</h1>');
         return $this->render('main/homepage.html.twig',[
             'title' =>'Homepage',
