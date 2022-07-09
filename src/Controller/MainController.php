@@ -13,6 +13,11 @@ class MainController extends AbstractController
 
 
 
+
+    
+/*********************************
+ ****** affichage des vues********
+ *********************************/
     /**
      *  Show homepage
      *
@@ -25,31 +30,11 @@ class MainController extends AbstractController
 
         //récupération de la liste des villes et des données associés
         $allcities = WeatherModel::getWeatherData();
-
-        //récupération de la ville choisie pour la session
-        // $session     = $request->getSession();
-        // $choosenCity = $session->get('choosenCity', [] );
-        // dump($choosenCity == []);
-        // dump($choosenCity);
-
-        // si session vide (pas de ville choisie) :
-        // if ($choosenCity==[]) {
-            // on en tire une au hasard
-            $randomIndexCity = array_rand($allcities, 1);
-            $choosenCity     = $allcities[$randomIndexCity];
-            
-        // }
-        // dump($choosenCity);
-        // si la session contient une donnée
-            // on la transmet
-
-
+           
         //transmission des données à la page
         return $this->render('main/homepage.html.twig',[
             'title'       => 'Bienvenue sur la météo des villes !',
             'cities'      => $allcities,
-            'choosenCity' => $choosenCity,
-
         ]);
 
     }
@@ -70,21 +55,16 @@ class MainController extends AbstractController
         //récupération de la session
         $session = $request->getSession();
 
-        // on l'intégre dans la session
-        $choosenCity = $session->get('choosenCity', [$theCity] );
-        // $choosenCity[$id]=$theCity;
+        // ? mise en place de la valeur en session
+        // on crée la variable de session en créant un tableau vide 
+            // cela permettra de remettre à 0 le tableau à chaque click
+            // car on ne veut qu'une sélection à la fois pour l'affichage
+        $choosenCity = $session->set('choosenCity', [] );
+        // on place la valeur et son identifiant
+        $choosenCity['key']=$theCity;
+        // on incorpore la valeur en session
+        $session->set('choosenCity', $choosenCity);       
 
-        $session->set('choosenCity', $choosenCity);
-
-        
-dump($theCity);
-dump($choosenCity);
-dd($session);
-// ! lors de l'affectation met l'index à 0 alors qu'il devrait prendre l'id de la ville
-// TODO il faut trouver le moyen d'affecter l'index du tableau d'origine comme index de la nouvelle entrée et non le 0 par défaut
-// die;
-        // dump($id);
-        // dd($session);
 
         //Retour à la homepage
         return $this->redirectToRoute('homepage');

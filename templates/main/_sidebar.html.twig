@@ -1,3 +1,7 @@
+              
+             
+{# si la session est vide: j'utilise une valeur par défaut: randomCity #}
+{% if app.session.get("choosenCity") is null %}
               <!-- Sidebar (le widget) -->
             <div class="col-3">
 
@@ -5,10 +9,10 @@
                 <div id="widget">
 
                     <!-- Si ville sélectionnée -->
-                    <p><b>{{choosenCity.city}}</b></p>
-                    <p>{{choosenCity.date}}</p>
-                    <p><img src="images/{{choosenCity.weather}}.png"></p>
-                    <p>{{choosenCity.min}}°C / {{choosenCity.max}}°C</p>
+                    <p><b>{{randomCity.city}}</b></p>
+                    <p>{{randomCity.date}}</p>
+                    <p><img src="images/{{randomCity.weather}}.png"></p>
+                    <p>{{randomCity.min}}°C / {{randomCity.max}}°C</p>
 
                     <!-- Si ville non sélectionnée -->
                     <div>Sélectionnez une ville<br>dans la liste de gauche <br> sur l'accueil</div>
@@ -16,3 +20,26 @@
                 </div>
 
             </div>
+{# si la session contient une donnée =>choix utilisateur => je l'utilise: choosenCity #}
+{% else %}
+
+ <!-- Sidebar (le widget) -->
+            <div class="col-3">
+
+                <!-- Code du widget -->
+                <div id="widget">
+
+                    <!-- Si ville sélectionnée -->
+                    <p><b>{{app.session.get("choosenCity").key.city}}</b></p>
+                    <p>{{app.session.get("choosenCity").key.date}}</p>
+                    <p><img src="images/{{app.session.get("choosenCity").key.weather}}.png"></p>
+                    <p>{{app.session.get("choosenCity").key.min}}°C / {{app.session.get("choosenCity").key.max}}°C</p>
+
+                    <!-- Si ville non sélectionnée -->
+                    <div>Sélectionnez une ville<br>dans la liste de gauche <br> sur l'accueil</div>
+
+                </div>
+
+            </div>
+
+{% endif %}
