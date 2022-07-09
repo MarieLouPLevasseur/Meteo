@@ -15,7 +15,9 @@
                     <p>{{randomCity.min}}°C / {{randomCity.max}}°C</p>
 
                     <!-- Si ville non sélectionnée -->
-                    <div>Sélectionnez une ville<br>dans la liste de gauche <br> sur l'accueil</div>
+                    <div>Sélectionnez une ville<br>dans la liste de gauche <br>
+                <a class="nav-link active" href="{{path ('homepage')}}" >sur l'accueil</a>
+                     </div>
 
                 </div>
 
@@ -36,7 +38,9 @@
                     <p>{{app.session.get("choosenCity").key.min}}°C / {{app.session.get("choosenCity").key.max}}°C</p>
 
                     <!-- Si ville non sélectionnée -->
-                    <div>Sélectionnez une ville<br>dans la liste de gauche <br> sur l'accueil</div>
+                    <div>Sélectionnez une ville<br>dans la liste de gauche <br>
+                <a class="nav-link active" href="{{path ('homepage')}}" >sur l'accueil</a>
+                     </div>
 
                 </div>
 
