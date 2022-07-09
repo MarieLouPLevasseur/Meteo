@@ -19,7 +19,7 @@ class BeachController extends AbstractController
     {
        
         return $this->render('beaches/beachpage.html.twig',[
-            'title' =>'La météo des montagnes',
+            'title' =>'La météo des plages',
 
         ]);
 
