@@ -18,6 +18,8 @@
                     <div>Sélectionnez une ville<br>dans la liste de gauche <br>
                 <a class="nav-link active" href="{{path ('homepage')}}" >sur l'accueil</a>
                      </div>
+                      <div><a class="nav-link active" href="{{path ('cityRemove')}}" >Effacer ma sélection</a>
+                     </div>
 
                 </div>
 
@@ -32,14 +34,16 @@
                 <div id="widget">
 
                     <!-- Si ville sélectionnée -->
-                    <p><b>{{app.session.get("choosenCity").key.city}}</b></p>
-                    <p>{{app.session.get("choosenCity").key.date}}</p>
-                    <p><img src="images/{{app.session.get("choosenCity").key.weather}}.png"></p>
-                    <p>{{app.session.get("choosenCity").key.min}}°C / {{app.session.get("choosenCity").key.max}}°C</p>
+                    <p><b>{{app.session.get("choosenCity").city}}</b></p>
+                    <p>{{app.session.get("choosenCity").date}}</p>
+                    <p><img src="images/{{app.session.get("choosenCity").weather}}.png"></p>
+                    <p>{{app.session.get("choosenCity").min}}°C / {{app.session.get("choosenCity").max}}°C</p>
 
                     <!-- Si ville non sélectionnée -->
                     <div>Sélectionnez une ville<br>dans la liste de gauche <br>
                 <a class="nav-link active" href="{{path ('homepage')}}" >sur l'accueil</a>
+                     </div>
+                      <div><a class="nav-link active" href="{{path ('cityRemove')}}" >Effacer ma sélection</a>
                      </div>
 
                 </div>

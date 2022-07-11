@@ -27,7 +27,7 @@ class MainController extends AbstractController
     public function homepage(Request $request) :Response
     {
        
-
+       
         //récupération de la liste des villes et des données associés
         $allcities = WeatherModel::getWeatherData();
            
@@ -59,12 +59,33 @@ class MainController extends AbstractController
         // on crée la variable de session en créant un tableau vide 
             // cela permettra de remettre à 0 le tableau à chaque click
             // car on ne veut qu'une sélection à la fois pour l'affichage
-        $choosenCity = $session->set('choosenCity', [] );
+        $choosenCity = $session->set('choosenCity', $theCity );
         // on place la valeur et son identifiant
-        $choosenCity['key']=$theCity;
+        // $choosenCity['key']=$theCity;
         // on incorpore la valeur en session
-        $session->set('choosenCity', $choosenCity);       
+        // $session->set('choosenCity', $choosenCity);       
 
+
+        //Retour à la homepage
+        return $this->redirectToRoute('homepage');
+    }
+
+
+
+    /**
+     *  Remove city choice to widget
+     *
+     * @Route("/city/remove", name="cityRemove", methods="GET")
+     * @return Response
+     */
+    public function cityRemove(Request $request) :Response
+    {     
+
+        //récupération de la session
+        $session = $request->getSession();
+
+        // ? effacement valeur mise en place en session
+        $session->clear('choosenCity', [] );
 
         //Retour à la homepage
         return $this->redirectToRoute('homepage');

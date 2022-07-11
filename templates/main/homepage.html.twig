@@ -10,7 +10,7 @@
 
                 <div class="item item--bg-{{current_city.weather}}">
                     <div class="item--city"><a href="{{path ('cityAdd', {id: city_id})}}">{{current_city.city}}</a></div>
-                    <div class="item--forecast">{{current_city.date}} : {{current_city.min}} / {{current_city.max}}</div>
+                    <div class="item--forecast">{{current_city.date|date("d-m")}} : {{current_city.min}} / {{current_city.max}}</div>
                 </div>
             {% endfor %}
 
