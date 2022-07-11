@@ -19,13 +19,13 @@
     <nav class="container py-3 mb-3">
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <a class="nav-link {% if title == 'Bienvenue sur la météo des villes !' %} active {% endif %} " href="{{path ('homepage')}}" >Accueil</a>
+                <a class="nav-link  {% block nav_homepage %}{% endblock %} " href="{{path ('homepage')}}" >Accueil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {% if title =='A la montagne' %} active {% endif %} " href="{{path ('mountainpage')}}">Montagne</a>
+                <a class="nav-link  {% block nav_mountain %}{% endblock %}" href="{{path ('mountainpage')}}">Montagne</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {% if title =='La météo des plages' %} active {% endif %} " href="{{path ('beachpage')}}">Plages</a>
+                <a class="nav-link  {% block nav_beach %}{% endblock %} " href="{{path ('beachpage')}}">Plages</a>
             </li>
         </ul>
     </nav>
