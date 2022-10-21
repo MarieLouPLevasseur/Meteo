@@ -1,3 +1,7 @@
+              
+             
+{# si la session est vide: j'utilise une valeur par défaut: randomCity #}
+{% if app.session.get("choosenCity") is null %}
               <!-- Sidebar (le widget) -->
             <div class="col-3">
 
@@ -5,14 +9,53 @@
                 <div id="widget">
 
                     <!-- Si ville sélectionnée -->
-                    <p><b>Bordeaux</b></p>
-                    <p>29-01-2020</p>
-                    <p><img src="images/sun-cloud.png"></p>
-                    <p>0°C / 10°C</p>
+                    <p><b>{{randomCity.city}}</b></p>
+                    <p>{{randomCity.date}}</p>
+                    <p><img src="images/{{randomCity.weather}}.png"></p>
+                    <p>{{randomCity.min}}°C / {{randomCity.max}}°C</p>
 
                     <!-- Si ville non sélectionnée -->
-                    <div>Sélectionnez une ville<br>dans la liste de gauche</div>
+                    <div>Sélectionnez une ville<br>dans la liste de gauche <br>
+                <a class="nav-link active" href="{{path ('homepage')}}" >sur l'accueil</a>
+                     </div>
+                      <div><a class="nav-link active" href="{{path ('cityRemove')}}" >Effacer ma sélection</a>
+                     </div>
 
                 </div>
 
             </div>
+{# si la session contient une donnée =>choix utilisateur => je l'utilise: choosenCity #}
+{% else %}
+
+ <!-- Sidebar (le widget) -->
+            <div class="col-3">
+
+                <!-- Code du widget -->
+                <div id="widget">
+
+                    <!-- Si ville sélectionnée -->
+{# attention si sous-dossier: nécessité de mettre asset pour les images #}
+{# au lieu de répété app.session, on peut lui créer une variable en faisant
+        {% set choosenCity = app.session.get('choosenCity') %}
+on pourra donc réutiliser la condition
+        {% if choosenCity %}
+        si oui on utilisera donc en parametre le 
+
+ #}
+                    <p><b>{{app.session.get("choosenCity").city}}</b></p>
+                    <p>{{app.session.get("choosenCity").date}}</p>
+                    <p><img src="images/{{app.session.get("choosenCity").weather}}.png"></p>
+                    <p>{{app.session.get("choosenCity").min}}°C / {{app.session.get("choosenCity").max}}°C</p>
+
+                    <!-- Si ville non sélectionnée -->
+                    <div>Sélectionnez une ville<br>dans la liste de gauche <br>
+                <a class="nav-link active" href="{{path ('homepage')}}" >sur l'accueil</a>
+                     </div>
+                      <div><a class="nav-link active" href="{{path ('cityRemove')}}" >Effacer ma sélection</a>
+                     </div>
+
+                </div>
+
+            </div>
+
+{% endif %}
