@@ -1,4 +1,4 @@
-## Bonjour et bienvenu sur la météo des villes
+## Bonjour et bienvenue sur la météo des villes
 
 
 
