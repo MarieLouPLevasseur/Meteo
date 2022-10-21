@@ -1,14 +1,9 @@
-## Bonjour et bienvenue sur la météo des villes
-
+# Météo
 
 
 ![page d'accueil](public/images/page_accueil.jpg)
 
-Petit exercice en Symfony m'ayant permis d'exercer les préférences utilisateurs en favoris.
+## Petit exercice en Symfony en autonomie
 
-Pour l'installation:
+Exercice sur les préférences utilisateurs en favoris.
 
-- clone du projet: `git clone copie repo`
-- installation projet `composer install`
-
-et c'est tout!
